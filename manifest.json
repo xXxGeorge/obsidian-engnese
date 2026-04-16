@@ -1,0 +1,9 @@
+{
+	"id": "pinyin-completion",
+	"name": "Engnese",
+	"version": "0.1.0",
+	"minAppVersion": "1.5.0",
+	"description": "English-first pinyin completion backed by Rime dictionaries.",
+	"author": "xXxGeorge",
+	"isDesktopOnly": true
+}
