@@ -36,8 +36,8 @@ This plugin is desktop-only because it reads dictionaries from the local filesys
 ## Install From Source
 
 ```bash
-git clone <your-repo-url>
-cd obsidian-pinyin-completion
+git clone https://github.com/xXxGeorge/obsidian-engnese.git
+cd obsidian-engnese
 npm install
 npm run build
 ```
@@ -45,7 +45,7 @@ npm run build
 Copy these files into:
 
 ```text
-<YourVault>/.obsidian/plugins/pinyin-completion/
+<YourVault>/.obsidian/plugins/engnese/
 ```
 
 Files to copy:
@@ -67,10 +67,10 @@ npm run dev
 The plugin ID is still:
 
 ```text
-pinyin-completion
+engnese
 ```
 
-So the vault plugin folder should remain `pinyin-completion`.
+So the vault plugin folder should remain `engnese`.
 
 ## Recommended Dictionary Path
 
