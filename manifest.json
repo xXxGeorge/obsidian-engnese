@@ -3,7 +3,7 @@
 	"name": "Engnese",
 	"version": "1.0.0",
 	"minAppVersion": "1.5.0",
-	"description": "English-first pinyin completion backed by Rime dictionaries.",
+	"description": "input Chinese in English input method to avoid frequently input method switching",
 	"author": "xXxGeorge",
 	"isDesktopOnly": true
 }
