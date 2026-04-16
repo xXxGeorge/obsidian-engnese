@@ -137,4 +137,4 @@ engnese
 
 ## 许可证
 
-本项目使用 `0-BSD` 许可证。见 [LICENSE](./LICENSE)。
+本项目使用 `MIT` 许可证。见 [LICENSE](./LICENSE)。

@@ -137,4 +137,4 @@ Note: in some environments, `Ctrl-[` is interpreted as `Escape`. If that happens
 
 ## License
 
-This project is licensed under `0-BSD`. See [LICENSE](./LICENSE).
+This project is licensed under `MIT`. See [LICENSE](./LICENSE).
