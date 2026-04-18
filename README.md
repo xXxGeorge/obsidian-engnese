@@ -4,34 +4,32 @@
 
 Engnese is an Obsidian desktop plugin for English-first pinyin completion.
 
-It lets you type raw English letters directly into the editor, while also treating the current token as pinyin in the background. When you pick a candidate, the already-inserted English token is replaced with Chinese text in place.
+It allows users to keep typing English letters in the editor while treating the current token as pinyin in the background. When a candidate is accepted, the already inserted English token is replaced in place with Chinese text.
 
-## Highlights
+## What It Does
 
-- English-first typing flow with no inline preedit
-- Rime dictionary support via local `.dict.yaml` files
-- Prefix fallback for long pinyin streams
-- Configurable candidate selection shortcuts
-- Optional double-space to accept the first candidate
-- Context guards for code blocks, inline code, and math
+- Keeps the normal English typing flow and avoids inline preedit.
+- Reads local Rime `.dict.yaml` dictionaries, including `import_tables`.
+- Falls back to the longest valid prefix when a full pinyin stream has no direct match.
+- Supports configurable candidate shortcuts and paging.
+- Supports optional double-space to accept the first candidate.
+- Avoids triggering inside fenced code blocks, inline code, and math contexts.
 
-## How It Works
-
-Examples:
+## Examples
 
 - `woaini` -> `我爱你`
 - `ni` + double-space -> `你`
-- `chunfengyichui` -> `春风` first, then continue with `yichui`
+- `chunfengyichui` -> select `春风`, then continue with `yichui`
 
-If a full-token match does not exist, Engnese falls back to the longest valid prefix and lets you continue selecting the rest.
+If a full-token match does not exist, Engnese uses the longest available prefix and leaves the remaining suffix in the editor so the next completion cycle can continue from there.
 
 ## Requirements
 
 - Obsidian desktop
-- A local Rime dictionary
-- Node.js and npm for building from source
+- A local Rime dictionary file
+- Node.js and npm if building from source
 
-This plugin is desktop-only because it reads dictionaries from the local filesystem.
+The plugin is desktop-only because it reads dictionaries from the local filesystem.
 
 ## Install From Source
 
@@ -42,13 +40,13 @@ npm install
 npm run build
 ```
 
-Copy these files into:
+Copy the build output into:
 
 ```text
-<YourVault>/.obsidian/plugins/engnese/
+<vault>/.obsidian/plugins/engnese/
 ```
 
-Files to copy:
+Required files:
 
 - `manifest.json`
 - `main.js`
@@ -64,35 +62,35 @@ Run the watcher:
 npm run dev
 ```
 
-The plugin ID is still:
+Build a production bundle:
 
-```text
-engnese
+```bash
+npm run build
 ```
 
-So the vault plugin folder should remain `engnese`.
+The plugin ID is `engnese`, so the target plugin directory should also be named `engnese`.
 
-## Recommended Dictionary Path
+## Dictionary Path
 
-Default:
+Default path:
 
 ```text
 ~/Library/Rime/rime_ice.dict.yaml
 ```
 
-If needed, use an absolute path such as:
+If path expansion causes issues, use an absolute path such as:
 
 ```text
-/Users/<your-name>/Library/Rime/rime_ice.dict.yaml
+/Users/<user>/Library/Rime/rime_ice.dict.yaml
 ```
 
 ## Settings
 
 ### General
 
-- `Enable plugin`: enable or disable Engnese
-- `Rime dictionary path`: root dictionary file
-- `Rebuild dictionary index`: re-parse the configured dictionary
+- `Enable plugin`: turn Engnese on or off
+- `Rime dictionary path`: main dictionary entry file
+- `Rebuild dictionary index`: re-parse the configured dictionary and refresh the in-memory index
 
 ### Candidate behavior
 
@@ -120,7 +118,7 @@ Default shortcuts:
 - `Ctrl-,`: previous page
 - `Ctrl-.`: next page
 
-Note: in some environments, `Ctrl-[` is interpreted as `Escape`. If that happens, change `Select candidate 5` in settings.
+In some environments, `Ctrl-[` is interpreted as `Escape`. If that happens, remap `Select candidate 5` in plugin settings.
 
 ### Context guards
 
@@ -128,12 +126,18 @@ Note: in some environments, `Ctrl-[` is interpreted as `Escape`. If that happens
 - `Disable in inline code`
 - `Disable in math`
 
+## Limitations
+
+- The dictionary index is currently kept in memory only and is rebuilt on demand.
+- Candidate ranking is dictionary-weight based with a few simple heuristics; there is no adaptive learning yet.
+- The plugin currently targets desktop usage only.
+
 ## Troubleshooting
 
-- Dictionary load error: verify the configured path and try an absolute path
-- Changed dictionary path: click `Rebuild dictionary index`
-- `Ctrl-[` acts like Escape: remap candidate 5 to another shortcut
-- Unexpected trailing space after double-space selection: disable `Keep space after Double Space selection`
+- Dictionary load error: verify the configured path and try an absolute path.
+- Dictionary changed but results did not update: click `Rebuild dictionary index`.
+- `Ctrl-[` behaves like `Escape`: remap candidate 5 to another shortcut.
+- Double-space keeps a trailing space unexpectedly: disable `Keep space after Double Space selection`.
 
 ## License
 
