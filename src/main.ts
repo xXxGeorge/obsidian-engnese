@@ -30,7 +30,7 @@ export default class PinyinCompletionPlugin extends Plugin {
 
 		this.addCommand({
 			id: "rebuild-rime-index",
-			name: "Rebuild Rime dictionary index",
+			name: "Rebuild rime dictionary index",
 			callback: async () => {
 				await this.rebuildDictionaryIndex();
 			},
@@ -49,11 +49,6 @@ export default class PinyinCompletionPlugin extends Plugin {
 	async saveSettings(): Promise<void> {
 		await this.saveData(this.settings);
 		this.pinyinEngine?.updateSettings(this.settings);
-	}
-
-	async reloadEditorExtensions(): Promise<void> {
-		this.pinyinEngine.updateSettings(this.settings);
-		await this.editorExtensions.reload();
 	}
 
 	async rebuildDictionaryIndex(): Promise<void> {

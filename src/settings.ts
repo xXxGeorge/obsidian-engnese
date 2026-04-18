@@ -57,7 +57,7 @@ export class PinyinCompletionSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Enable plugin")
-			.setDesc("Enable English-first pinyin completion in supported editors.")
+			.setDesc("Enable english-first pinyin completion in supported editors.")
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.enabled)
 				.onChange(async value => {
@@ -67,7 +67,7 @@ export class PinyinCompletionSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Rime dictionary path")
-			.setDesc("Main Rime dictionary file. Supports import_tables from that file.")
+			.setDesc("Main rime dictionary file. Supports import_tables from that file.")
 			.addText(text => text
 				.setPlaceholder("~/Library/Rime/rime_ice.dict.yaml")
 				.setValue(this.plugin.settings.rimeDictionaryPath)
@@ -78,7 +78,7 @@ export class PinyinCompletionSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Rebuild dictionary index")
-			.setDesc("Re-parse the Rime dictionary and refresh the cached index.")
+			.setDesc("Re-parse the rime dictionary and refresh the cached index.")
 			.addButton(button => button
 				.setButtonText("Rebuild")
 				.onClick(async () => {
@@ -94,14 +94,14 @@ export class PinyinCompletionSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Popup behavior")
-			.setDesc("Show candidates whenever the current English token can be parsed as pinyin.")
+			.setDesc("Show candidates whenever the current english token can be parsed as pinyin.")
 			.addText(text => text
 				.setValue("Always")
 				.setDisabled(true));
 
 		new Setting(containerEl)
-			.setName("Double Space selects first candidate")
-			.setDesc("First Space remains a normal space. Press Space again within the timeout to replace the previous pinyin token with the first candidate.")
+			.setName("Double space selects first candidate")
+			.setDesc("First space remains a normal space. Press space again within the timeout to replace the previous pinyin token with the first candidate.")
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.doubleSpaceSelect)
 				.onChange(async value => {
@@ -110,8 +110,8 @@ export class PinyinCompletionSettingTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName("Double Space timeout")
-			.setDesc("Maximum interval in milliseconds between the two Space presses.")
+			.setName("Double space timeout")
+			.setDesc("Maximum interval in milliseconds between the two space presses.")
 			.addText(text => text
 				.setPlaceholder("350")
 				.setValue(String(this.plugin.settings.doubleSpaceTimeoutMs))
@@ -124,8 +124,8 @@ export class PinyinCompletionSettingTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName("Keep space after Double Space selection")
-			.setDesc("When enabled, double Space turns `woaini  ` into `我爱你 ` instead of `我爱你`.")
+			.setName("Keep space after double space selection")
+			.setDesc("When enabled, double space turns `woaini  ` into `我爱你 ` instead of `我爱你`.")
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.keepSpaceAfterDoubleSpaceSelection)
 				.onChange(async value => {
@@ -179,7 +179,7 @@ export class PinyinCompletionSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Select candidate 5")
-			.setDesc("Shortcut for the fifth candidate in the current page. Ctrl-[ may be interpreted as Escape by the system, so changing it is recommended if it conflicts.")
+			.setDesc("Shortcut for the fifth candidate in the current page. Ctrl-[ may be interpreted as escape by the system, so changing it is recommended if it conflicts.")
 			.addText(text => text
 				.setPlaceholder("Ctrl-[")
 				.setValue(this.plugin.settings.selectFifthKey)

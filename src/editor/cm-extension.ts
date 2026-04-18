@@ -82,10 +82,6 @@ export class EditorExtensionManager {
 		this.plugin.registerEditorExtension(this.build());
 	}
 
-	async reload(): Promise<void> {
-		return;
-	}
-
 	private build(): Extension {
 		const environment = this.environment;
 		return [
